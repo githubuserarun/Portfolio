@@ -3,8 +3,7 @@ import { Mail, MapPin, Send, Github, Linkedin, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { useToast } from "@/hooks/use-toast";
-import { supabase } from "@/integrations/supabase/client";
+import { toast, useToast } from "@/hooks/use-toast";
 import { useSocialLinks } from "@/hooks/usePortfolioData";
 
 const ContactSection = () => {
@@ -15,6 +14,7 @@ const ContactSection = () => {
     name: "",
     email: "",
     message: "",
+    access_key: import.meta.env.VITE_WEB3FORMS_ACCESS_KEY
   });
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -22,16 +22,28 @@ const ContactSection = () => {
     setIsSubmitting(true);
 
     try {
-      const { error } = await supabase.from("contact_messages").insert([formData]);
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        },
+        body: JSON.stringify(formData)
+      });
 
-      if (error) throw error;
+      const result = await response.json();
+      console.log(result);
+
+      if (!result.success) {
+        throw new Error("Failed to send message");
+      }
 
       toast({
         title: "Message sent!",
         description: "Thanks for reaching out. I'll get back to you soon.",
       });
 
-      setFormData({ name: "", email: "", message: "" });
+      setFormData({ name: "", email: "", message: "", access_key: import.meta.env.VITE_WEB3FORMS_ACCESS_KEY });
     } catch (error) {
       toast({
         title: "Error",
@@ -74,12 +86,12 @@ const ContactSection = () => {
             </p>
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-12">
+          <div className="grid lg:grid-cols-1 gap-12">
             {/* Contact Info */}
             <div className="space-y-8">
               <div className="p-6 rounded-xl bg-card card-glow border-glow">
                 <h3 className="text-xl font-semibold mb-6">Let's Connect</h3>
-                
+
                 <div className="space-y-4">
                   {socialLinks?.map((link) => (
                     <a
@@ -120,7 +132,7 @@ const ContactSection = () => {
             {/* Contact Form */}
             <form onSubmit={handleSubmit} className="p-6 rounded-xl bg-card card-glow border-glow">
               <h3 className="text-xl font-semibold mb-6">Send a Message</h3>
-              
+
               <div className="space-y-4">
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium mb-2">

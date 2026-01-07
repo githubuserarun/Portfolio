@@ -40,7 +40,7 @@ const ProjectsSection = () => {
                   <h3 className="text-2xl font-bold mb-3 group-hover:text-primary transition-colors">
                     {project.title}
                   </h3>
-                  
+
                   <p className="text-muted-foreground text-sm mb-4 line-clamp-3">
                     {project.description}
                   </p>
@@ -67,7 +67,7 @@ const ProjectsSection = () => {
                   {/* Features */}
                   {project.features && project.features.length > 0 && (
                     <ul className="space-y-1 mb-6">
-                      {project.features.slice(0, 3).map((feature, i) => (
+                      {project.features.slice(0, 4).map((feature, i) => (
                         <li key={i} className="flex items-center gap-2 text-sm text-muted-foreground">
                           <ChevronRight className="w-4 h-4 text-primary flex-shrink-0" />
                           {feature}

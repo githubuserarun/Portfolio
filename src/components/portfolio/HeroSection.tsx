@@ -7,7 +7,7 @@ const HeroSection = () => {
   const { data: about } = useAboutContent();
   const { data: socialLinks } = useSocialLinks();
   const [typedText, setTypedText] = useState("");
-  const roles = ["Full Stack Developer", "Crypto Specialist", "React Expert"];
+  const roles = ["Full Stack Developer", "Crypto Application Developer", "React.js Developer"];
   const [roleIndex, setRoleIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
 
@@ -54,9 +54,9 @@ const HeroSection = () => {
       <div className="absolute inset-0 bg-gradient-dark" />
       <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-3xl animate-pulse-slow" />
       <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-secondary/10 rounded-full blur-3xl animate-pulse-slow" />
-      
+
       {/* Grid pattern overlay */}
-      <div 
+      <div
         className="absolute inset-0 opacity-10"
         style={{
           backgroundImage: `linear-gradient(hsl(185 80% 50% / 0.1) 1px, transparent 1px),
@@ -104,7 +104,7 @@ const HeroSection = () => {
                 size="lg"
                 className="border-primary/50 hover:bg-primary/10 px-8"
               >
-                <a href={about.resume_url} target="_blank" rel="noopener noreferrer">
+                <a href={about.resume_url} download="Arun_mern_dev.pdf" target="_blank" rel="noopener noreferrer">
                   <Download className="mr-2" size={18} />
                   Download CV
                 </a>

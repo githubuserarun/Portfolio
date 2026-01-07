@@ -31,7 +31,7 @@ const AboutSection = () => {
                 {/* Decorative elements */}
                 <div className="absolute inset-0 rounded-2xl border border-primary/20 rotate-6" />
                 <div className="absolute inset-0 rounded-2xl border border-secondary/20 -rotate-6" />
-                
+
                 {/* Main content box */}
                 <div className="relative rounded-2xl bg-card p-8 card-glow border-glow h-full flex flex-col justify-center">
                   <div className="grid grid-cols-2 gap-4">
@@ -46,7 +46,7 @@ const AboutSection = () => {
                       </div>
                     ))}
                   </div>
-                  
+
                   {/* Stats */}
                   <div className="mt-8 grid grid-cols-3 gap-4 text-center">
                     <div>
@@ -71,10 +71,10 @@ const AboutSection = () => {
               <h3 className="text-2xl font-semibold">
                 {about?.subtitle || "Full Stack (MERN) Developer"}
               </h3>
-              
+
               <p className="text-muted-foreground leading-relaxed">
-                {about?.description || 
-                  "I am an enthusiastic Full Stack Developer with hands-on experience in building scalable microservices for crypto exchange platforms. Proficient in MERN stack with strong expertise in React, Node.js, and both SQL and NoSQL databases."}
+                {about?.description ||
+                  "I am an enthusiastic Full Stack Developer with hands-on experience in building scalable microservices for centralised crypto exchange platforms. Proficient in MERN stack with strong expertise in React, Node.js, and both SQL and NoSQL databases."}
               </p>
 
               {/* Highlights */}
