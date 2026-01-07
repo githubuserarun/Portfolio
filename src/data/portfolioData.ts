@@ -1,17 +1,3 @@
-import {
-    Briefcase,
-    Code,
-    Database,
-    Layout,
-    Server,
-    Smartphone,
-    Wrench,
-    Github,
-    Linkedin,
-    Mail,
-    FileText,
-} from "lucide-react";
-
 export const PORTFOLIO_DATA = {
     about: {
         title: "Arunkumar R",
